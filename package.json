@@ -1,6 +1,6 @@
 {
   "name": "use-react-slider",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Build your own React slider seamlessly",
   "main": "dist/index.js",
   "module": "dist/use-react-slider.esm.js",
