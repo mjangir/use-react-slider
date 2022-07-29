@@ -1,0 +1,115 @@
+{
+  "name": "use-react-slider",
+  "version": "0.0.0",
+  "description": "Build your own React slider seamlessly",
+  "main": "dist/index.js",
+  "module": "dist/use-react-slider.esm.js",
+  "typings": "dist/index.d.ts",
+  "repository": "https://github.com/mjangir/use-react-slider.git",
+  "author": "Manish Jangir <mjangir70@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjangir/use-react-slider/issues"
+  },
+  "homepage": "http://slider.manishjangir.com",
+  "keywords": [
+    "use react slider",
+    "react slider",
+    "react slide show",
+    "slideshow",
+    "slider"
+  ],
+  "scripts": {
+    "_postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
+    "changeset": "changeset",
+    "release": "changeset publish",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "test:watch": "npm run test -- --watchAll",
+    "lint": "tsdx lint",
+    "lint:staged": "lint-staged",
+    "lint:commit": "commitlint",
+    "commit": "git-cz",
+    "format": "prettier --write \"src/**/*\" \"website/**/*.{ts,tsx,js,jsx,md,mdx}\"",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "prepublish": "yarn build",
+    "start:app": "yarn build && yarn --cwd . link && yarn --cwd node_modules/react link && yarn --cwd ./app link react use-react-slider && yarn --cwd ./app && yarn --cwd ./app run dev"
+  },
+  "size-limit": [
+    {
+      "path": "dist/use-react-slider.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/use-react-slider.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.6",
+    "@changesets/cli": "^2.24.1",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@types/jest": "^28.1.6",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.1",
+    "jest-environment-jsdom-sixteen": "^2.0.0",
+    "lint-staged": "^13.0.3",
+    "pinst": "^3.0.0",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,md,mdx,js,jsx}": [
+      "npm run format"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupTests.ts"
+    ],
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "cypress"
+    ],
+    "testEnvironment": "jest-environment-jsdom-sixteen"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
